@@ -121,6 +121,7 @@ namespace LB5_2
         private void поСеместруToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StripLastOperation.Text = "Поиск по семестру";
+            new SearchTerm(this).ShowDialog();
         }
 
         private void поКурсуToolStripMenuItem_Click(object sender, EventArgs e)

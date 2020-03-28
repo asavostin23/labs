@@ -113,6 +113,12 @@
     <Compile Include="SearchLecturer.Designer.cs">
       <DependentUpon>SearchLecturer.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchTerm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchTerm.Designer.cs">
+      <DependentUpon>SearchTerm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subject.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
@@ -137,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="SearchLecturer.resx">
       <DependentUpon>SearchLecturer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchTerm.resx">
+      <DependentUpon>SearchTerm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
