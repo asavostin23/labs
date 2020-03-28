@@ -1,0 +1,88 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:r="http://www.sisoftware.co.uk/schemas/Report/v2007"
+        targetNamespace="http://www.sisoftware.co.uk/schemas/Report/v2007">
+       
+<element name="Name" type="string" />
+<element name="DataValue" type="string" />
+<element name="DataValID" type="integer" />
+<element name="TypeID" type="integer" />
+<element name="IconID" type="integer" />
+<element name="HelpID" type="integer" />
+
+<element name="Capabilities" type="integer" />
+
+<element name="ProgVersion" type="integer" />
+<element name="BuildVersion" type="integer" />
+<element name="Completed" type="integer" />
+
+<complexType name="TControl">
+  <sequence>
+    <element ref="r:Name" />
+    <element ref="r:DataValue" />
+    <element ref="r:DataValID" />
+    <element ref="r:HelpID" />
+  </sequence>
+</complexType>
+
+<complexType name="TItem">
+  <sequence>
+    <element ref="r:Name" />
+    <element ref="r:IconID" />
+    <element ref="r:DataValue" />
+    <element ref="r:HelpID" />
+  </sequence>
+</complexType>
+
+<complexType name="TItemGroup">
+  <sequence>
+    <element ref="r:Name" />
+    <element ref="r:IconID" />
+    <element ref="r:HelpID" />
+    <element ref="r:TItem" minOccurs="0" />
+    <element ref="r:TControl" minOccurs="0" />
+  </sequence>
+</complexType>
+
+<complexType name="TDevice">
+  <sequence>
+    <element ref="r:Name" />
+    <element ref="r:IconID" />
+    <element ref="r:HelpID" />
+    <element ref="r:TItemGroup" minOccurs="0" />
+    <element ref="r:TControl" minOccurs="0" />
+  </sequence>
+</complexType>
+
+<complexType name="TClass">
+  <sequence>
+    <element ref="r:Name" />
+    <element ref="r:IconID" />
+    <element ref="r:HelpID" />
+    <element ref="r:TDevice" minOccurs="0" />
+  </sequence>
+</complexType>
+
+<complexType name="TModule">
+  <sequence>
+    <element ref="r:Capabilities" />
+    <element ref="r:Name" />
+    <element ref="r:TypeID" />
+    <element ref="r:HelpID" />
+    <element ref="r:TControl" minOccurs="0" />
+    <element ref="r:TClass" minOccurs="0" />
+    <element ref="r:TDevice" minOccurs="0" />
+    <element ref="r:TItemGroup" minOccurs="0" />
+    <element ref="r:TItem" minOccurs="0" />
+  </sequence>
+</complexType>
+
+<complexType name="TReport">
+  <sequence>
+    <element ref="r:ProgVersion" />
+    <element ref="r:BuildVersion" />
+    <element ref="r:Completed" />
+    <element ref="r:TModule" minOccurs="0" />
+  </sequence>
+</complexType>
+
+</schema>

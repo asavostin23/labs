@@ -1,0 +1,33 @@
+
+<!ELEMENT Name (#PCDATA)>
+<!ELEMENT DataValue (#PCDATA)>
+<!ELEMENT DataValID (#PCDATA)>
+<!ELEMENT TypeID (#PCDATA)>
+<!ELEMENT IconID (#PCDATA)>
+<!ELEMENT HelpID (#PCDATA)>
+
+<!ELEMENT Capabilities (#PCDATA)>
+
+<!ELEMENT ProgVersion (#PCDATA)>
+<!ELEMENT BuildVersion (#PCDATA)>
+<!ELEMENT Completed (#PCDATA)>
+
+<!ELEMENT TItem (Name, IconID, TypeID, DataValue, HelpID)>
+
+<!ELEMENT TControl (Name, DataValID, DataValue)>
+
+<!ELEMENT TItemGroup (Name, IconID, HelpID, TItem*, TControl*)>
+
+<!ELEMENT TDevice (Name, IconID, HelpID, TItemGroup*, TControl*)>
+
+<!ELEMENT TClass (Name, IconID, HelpID, TDevice*)>
+
+<!ELEMENT TModule (Capabilities, Name, TypeID, HelpID, TControl*, TClass*, TDevice*, TItemGroup*, TItem*)>
+
+<!ELEMENT TReport (ProgVersion, BuildVersion, Completed, TModule*)>
+
+
+
+
+
+

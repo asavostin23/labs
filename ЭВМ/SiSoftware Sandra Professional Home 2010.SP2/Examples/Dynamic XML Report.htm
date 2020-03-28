@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<TITLE>SiSoftware Sandra System Report - generated from XML</TITLE>
+<STYLE>
+H2  { font: bold 130% Tahoma, Verdana, Arial; color: #0066FF; vertical-align: text-top}
+H3  { font: bold 105% Tahoma, Verdana, Arial; color: #0066FF; vertical-align: text-top; text-indent:3mm}
+H3  { font: bold 100% Tahoma, Verdana, Arial; color: #0066FF; vertical-align: text-top; text-indent:3mm}
+H4  { font: bold 80% Tahoma, Verdana, Arial; color: #000000; vertical-align: text-top; text-indent:6mm}
+DIV.field { font: 80% Tahoma, Verdana, Arial; color: #000000; vertical-align: text-top; text-indent:10mm}
+DIV.value { font: 80% Tahoma, Verdana, Arial; color: #C0C0C0; vertical-align: text-top; text-indent:10mm}
+</STYLE>
+</HEAD>
+
+<BODY>
+
+      <XML ID="XMLDoc"></XML>
+      <XML ID="XSLDoc"></XML>
+      <DIV ID="insertHTML"></DIV>
+
+      <SCRIPT LANGUAGE=VBScript>
+        XMLDoc.async = false
+        XMLDoc.load("System Report.xml")
+        XSLDoc.async = false
+        XSLDoc.load("ReportStyle.xsl")
+        result = XMLDoc.documentElement.transformNode(XSLDoc.documentElement)
+        insertHTML.innerHTML = result
+      </SCRIPT>
+
+</BODY>
+
+</HTML>

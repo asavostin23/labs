@@ -1,0 +1,18 @@
+<application
+  title="Sandra"
+  ID=""
+  run=".\Sandra.lnk"
+  BGColor="RGB(255,255,255)"
+  name="Sandra"
+  CompanyName="SiSoftware"
+  startImage=".\Sandra.png"
+  thumbnailImage=".\Sandra.png"
+  sharedViewport=""
+  NowPlayingDirective=""
+  <capabilitiesRequired
+    directX="True"
+    audio="True"
+    video="True"
+    intensiveRendering="False"
+    console="False"/>
+</application>

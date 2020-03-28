@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<applications xmlns="http://schemas.microsoft.com/windows/cpltasks/v1" 
+              xmlns:sh="http://schemas.microsoft.com/windows/tasks/v1">
+    
+    <application id="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2097}">
+    
+        <!-- Tools -->
+        <sh:task id="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2197}" needsElevation="true"> 
+            <sh:name>@%SAN_DIR%\sandra.mui,-5000</sh:name>
+            <sh:keywords>@%SAN_DIR%\sandra.mui,-5005</sh:keywords>
+            <sh:command>%SAN_DIR%\sandra.exe /m 5000</sh:command>
+        </sh:task>
+
+        <!-- Benchmarks -->
+        <sh:task id="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2297}">
+            <sh:name>@%SAN_DIR%\sandra.mui,-5008</sh:name>
+            <sh:keywords>@%SAN_DIR%\sandra.mui,-5013</sh:keywords>
+            <sh:command>%SAN_DIR%\sandra.exe /m 5008</sh:command>
+        </sh:task>
+        
+        <!-- Hardware -->
+        <sh:task id="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2397}">
+            <sh:name>@%SAN_DIR%\sandra.mui,-5016</sh:name>
+            <sh:keywords>@%SAN_DIR%\sandra.mui,-5021</sh:keywords>
+            <sh:command>%SAN_DIR%\sandra.exe /m 5016</sh:command>
+        </sh:task>
+
+        <!-- Software -->
+        <sh:task id="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2497}">
+            <sh:name>@%SAN_DIR%\sandra.mui,-5024</sh:name>
+            <sh:keywords>@%SAN_DIR%\sandra.mui,-5029</sh:keywords>
+            <sh:command>%SAN_DIR%\sandra.exe /m 5024</sh:command>
+        </sh:task>
+        
+        <!-- Support -->
+        <sh:task id="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2597}" needsElevation="true">
+            <sh:name>@%SAN_DIR%\sandra.mui,-5032</sh:name>
+            <sh:keywords>@%SAN_DIR%\sandra.mui,-5037</sh:keywords>
+            <sh:command>%SAN_DIR%\sandra.exe /m 5032</sh:command>
+        </sh:task>
+        
+        <!-- Buy -->
+        <sh:task id="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2697}">
+            <sh:name>@%SAN_DIR%\sandra.mui,-5048</sh:name>
+            <sh:keywords>@%SAN_DIR%\sandra.mui,-5053</sh:keywords>
+            <sh:command>%SAN_DIR%\sandra.exe /m 5048</sh:command>
+        </sh:task>
+        
+        <!-- Category System -->    
+        <category id="2">
+            <sh:task idref="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2397}"/> 
+            <sh:task idref="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2297}"/>            
+        </category>
+
+        <category id="5"> 
+            <sh:task idref="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2197}"/>
+            <sh:task idref="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2597}"/>   
+            <sh:task idref="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2297}"/>
+        </category>
+
+        <category id="8">
+            <sh:task idref="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2497}"/> 
+            <sh:task idref="{C3113E55-7BCB-4de3-8EBF-60E6CE6B2297}"/>            
+        </category>
+   </application>
+</applications>

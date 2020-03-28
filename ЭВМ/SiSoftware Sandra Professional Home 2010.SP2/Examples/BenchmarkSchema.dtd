@@ -1,0 +1,20 @@
+
+<!ELEMENT Version (#PCDATA)>
+
+<!ELEMENT ModuleID (#PCDATA)>
+<!ELEMENT OsID (#PCDATA)>
+<!ELEMENT DataValID (#PCDATA)>
+<!ELEMENT ReferenceID (#PCDATA)>
+<!ELEMENT Name (#PCDATA)>
+<!ELEMENT User (#PCDATA)>
+<!ELEMENT Value (#PCDATA)>
+<!ELEMENT ExValue (#PCDATA)>
+
+<!ELEMENT TBenchmark (ModuleID, OsID, ReferenceID, Name, User, Value*, ExValue*)>
+
+<!ELEMENT TExport (Version, TBenchmark*)>
+
+
+
+
+

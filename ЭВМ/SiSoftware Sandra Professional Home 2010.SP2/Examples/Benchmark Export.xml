@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<TExport xmlns="http://www.sisoftware.co.uk/schemas/Export/v2007">
+  <Version>720926</Version>  
+  <TBenchmark>
+    <ModuleID>5152</ModuleID>
+    <OsID>1</OsID>
+    <ReferenceID>0</ReferenceID>
+    <Name>NOVA on 18 April 2007 at 17:20:03</Name>
+    <User>1</User>
+    <Value>393</Value>
+    <Value>0</Value>
+    <Value>592</Value>
+    <Value>1</Value>
+    <ExValue>1862</ExValue>
+  </TBenchmark>  
+  <TBenchmark>
+    <ModuleID>5152</ModuleID>
+    <OsID>1</OsID>
+    <ReferenceID>0</ReferenceID>
+    <Name>Intel Core 2 Quad QX6700 2.66GHz 2x4ML2 (Win32 x86)</Name>
+    <User>0</User>
+    <Value>48196</Value>
+    <Value>0</Value>
+    <Value>33538</Value>
+    <Value>2</Value>
+    <ExValue>2667</ExValue>
+  </TBenchmark>  
+  <TBenchmark>
+    <ModuleID>5152</ModuleID>
+    <OsID>1</OsID>
+    <ReferenceID>0</ReferenceID>
+    <Name>Intel Core 2 Quad Q6600 2.4GHz 2x4ML2 (Win32 x86)</Name>
+    <User>0</User>
+    <Value>43371</Value>
+    <Value>0</Value>
+    <Value>30180</Value>
+    <Value>2</Value>
+    <ExValue>2400</ExValue>
+  </TBenchmark>  
+  <TBenchmark>
+    <ModuleID>5152</ModuleID>
+    <OsID>1</OsID>
+    <ReferenceID>0</ReferenceID>
+    <Name>Intel Core 2 Quad Q6400 2.13GHz 2x4ML2 (Win32 x86)</Name>
+    <User>0</User>
+    <Value>38546</Value>
+    <Value>0</Value>
+    <Value>26823</Value>
+    <Value>2</Value>
+    <ExValue>2133</ExValue>
+  </TBenchmark>  
+  <TBenchmark>
+    <ModuleID>5152</ModuleID>
+    <OsID>1</OsID>
+    <ReferenceID>0</ReferenceID>
+    <Name>Intel Core 2 XE X6800 2.93GHz 4ML2 (Win32 x86)</Name>
+    <User>0</User>
+    <Value>26501</Value>
+    <Value>0</Value>
+    <Value>18441</Value>
+    <Value>2</Value>
+    <ExValue>2933</ExValue>
+  </TBenchmark>  
+</TExport>
+

@@ -1,0 +1,2 @@
+use SAV_UNIVER;
+select TEACHER, PULPIT from TEACHER;

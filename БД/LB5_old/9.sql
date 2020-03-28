@@ -1,0 +1,2 @@
+use SAV_UNIVER;
+select top(2) AUDITORIUM_TYPE from AUDITORIUM order by AUDITORIUM_CAPACITY desc;
