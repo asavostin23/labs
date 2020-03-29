@@ -52,20 +52,22 @@ namespace LB5_2
                 if (data.searchQuery != "")
                 {
                     result = new HashSet<Subject>();
-
-                    Regex fioSearch = new Regex($@"{data.searchQuery}",RegexOptions.IgnoreCase);//^
-                    foreach (Subject subject in callingForm.subjectsCopy)
+                    foreach (var str in data.searchQuery.Split(' '))
                     {
-                        foreach (Lecturer lecturer in subject.Lecturers)
+                        Regex fioSearch = new Regex($@"{str}", RegexOptions.IgnoreCase);//^
+                        foreach (Subject subject in callingForm.subjectsCopy)
                         {
-                            if ((fioSearch.Matches(lecturer.Name).Count +
-                                fioSearch.Matches(lecturer.Surname).Count +
-                                fioSearch.Matches(lecturer.Patronymic).Count) > 0)
+                            foreach (Lecturer lecturer in subject.Lecturers)
                             {
-                                result.Add(subject);
-                                break;
-                            }
+                                if ((fioSearch.Matches(lecturer.Name).Count +
+                                    fioSearch.Matches(lecturer.Surname).Count +
+                                    fioSearch.Matches(lecturer.Patronymic).Count) > 0)
+                                {
+                                    result.Add(subject);
+                                    break;
+                                }
 
+                            }
                         }
                     }
                 }
@@ -161,7 +163,7 @@ namespace LB5_2
     {
 
         [StringLength(100)]
-        [RegularExpression(@"[а-я|А-Я]*")]
+        [RegularExpression(@"(\s*[а-я|А-Я]*)*")]
         public string searchQuery { get; set; }
 
         [StringLength(100)]
