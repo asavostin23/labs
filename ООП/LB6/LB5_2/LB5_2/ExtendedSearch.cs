@@ -53,24 +53,11 @@ namespace LB5_2
                         case "CourseError":
                             CourseBox.BackColor = Color.Red;
                             break;
-                        case "AdditoinalQueryError":
+                        case "AdditonalQueryError":
                             AdditionalSearchBox.BackColor = Color.Red;
                             break;
                     }
                 }
-
-                //    if (!tb.MaskCompleted)
-                //    {
-                //        tb.BackColor = Color.Red;
-                //        tb.Tag = false;
-                //    }
-                //    else
-                //    {
-                //        tb.BackColor = System.Drawing.SystemColors.Window;
-                //        tb.Tag = true;
-                //    }
-                //Console.WriteLine(error.ErrorMessage);
-
             }
             else
             {
@@ -183,35 +170,35 @@ namespace LB5_2
             }
         }
 
-
-
-    }
-    public class ExtendedSearchData
-    {
-
-
-        [RegularExpression(@"(\s*[а-я|А-Я]*)*", ErrorMessage = "SearchError")]
-        public string searchQuery { get; set; }
-
-
-        [RegularExpression(@"\s*[1-2]{1}\s*(,\s*[1-2]{1}\s*)?", ErrorMessage = "TermError")]
-        public string termString { get; set; }
-
-
-
-        [RegularExpression(@"\s*\d{1}\s*(,\s*\d{1}\s*){0,3}", ErrorMessage = "CourseError")]
-        public string courseString { get; set; }
-
-
-        [RegularExpression(@"[A-Z|a-z|а-я|А-Я]*", ErrorMessage = "AdditonalQueryError")]
-        public string additionalQuery { get; set; }
-
-        public ExtendedSearchData(string searchQuery, string termString, string courseString, string additionalQuery)
+        class ExtendedSearchData
         {
-            this.searchQuery = searchQuery;
-            this.termString = termString;
-            this.courseString = courseString;
-            this.additionalQuery = additionalQuery;
+
+
+            [RegularExpression(@"(\s*[а-я|А-Я]*)*", ErrorMessage = "SearchError")]
+            public string searchQuery { get; set; }
+
+
+            [RegularExpression(@"\s*[1-2]{1}\s*(,\s*[1-2]{1}\s*)?", ErrorMessage = "TermError")]
+            public string termString { get; set; }
+
+
+
+            [RegularExpression(@"\s*\d{1}\s*(,\s*\d{1}\s*){0,3}", ErrorMessage = "CourseError")]
+            public string courseString { get; set; }
+
+
+            [RegularExpression(@"[а-я|А-Я]*", ErrorMessage = "AdditonalQueryError")]
+            public string additionalQuery { get; set; }
+
+            public ExtendedSearchData(string searchQuery, string termString, string courseString, string additionalQuery)
+            {
+                this.searchQuery = searchQuery;
+                this.termString = termString;
+                this.courseString = courseString;
+                this.additionalQuery = additionalQuery;
+            }
         }
+
     }
+    
 }
