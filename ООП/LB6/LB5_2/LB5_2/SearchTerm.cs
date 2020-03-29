@@ -29,8 +29,6 @@ namespace LB5_2
                 tempTerm.Add(2);
             foreach (Subject subject in callingForm.subjectsCopy)
             {
-                //if (subject.Term.Equals(tempTerm))
-                //    result.Add(subject);
                 bool check = true;
                 if (subject.Term.Count == tempTerm.Count)
                 {

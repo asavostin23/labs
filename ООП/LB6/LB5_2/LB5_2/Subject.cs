@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+
 
 namespace LB5_2
 {
@@ -27,13 +26,21 @@ namespace LB5_2
             LaboratoryCount = laboratoryCount;
             TypeControl = typeControl;
         }
-
+       
         public string Name { get; set; } //Название дисциплины
+
         public List<int> Term { get; set; } = new List<int>();//Семестр
         public List<int> Course { get; set; } = new List<int>(); //Курс
+
+       
         public int LectureCount { get; set; } //Количество лекций
+
+        
         public int LaboratoryCount { get; set; } //Количество лабораторных
+
+        
         public TypeControlEnum TypeControl { get; set; } //Тип контроля
+
         public List<Lecturer> Lecturers { get; set; } = new List<Lecturer>();//Лекторы
         public Guid ID; //id дисциплины
 

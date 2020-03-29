@@ -219,5 +219,11 @@ namespace LB5_2
                     }
             UpdateList();
         }
+
+        private void расширенныйПоискToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StripLastOperation.Text = "Расширенный поиск";
+            new ExtendedSearch(this).ShowDialog();
+        }
     }
 }

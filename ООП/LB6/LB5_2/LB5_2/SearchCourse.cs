@@ -39,8 +39,6 @@ namespace LB5_2
                         break;
                     }
                   
-            
-
             callingForm.subjects.Clear();
             callingForm.subjects.AddRange(result);
             callingForm.UpdateList();
