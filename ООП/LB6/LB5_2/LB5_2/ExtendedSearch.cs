@@ -34,146 +34,157 @@ namespace LB5_2
                 CourseBox.Text,
                 AdditionalSearchBox.Text
                 );
-            HashSet<Subject> result, result2;
-            if (data.searchQuery != "")
+
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(data);
+            if (!Validator.TryValidateObject(data, context, results, true))
             {
-                result = new HashSet<Subject>();
 
-                Regex fioSearch = new Regex($@"^{data.searchQuery}");
-                foreach (Subject subject in callingForm.subjectsCopy)
+                foreach (var error in results)
                 {
-                    foreach (Lecturer lecturer in subject.Lecturers)
-                    {
-                        if ((fioSearch.Matches(lecturer.Name).Count +
-                            fioSearch.Matches(lecturer.Surname).Count +
-                            fioSearch.Matches(lecturer.Patronymic).Count) > 0)
-                        {
-                            result.Add(subject);
-                            break;
-                        }
-
-                    }
+                    //Console.WriteLine(error.ErrorMessage);
                 }
             }
             else
-                result = new HashSet<Subject>(callingForm.subjectsCopy);
-
-            Regex digitRegex = new Regex(@"(\d{1})");
-            if (data.courseString != "")
             {
-                result2 = new HashSet<Subject>();
-                List<int> tempCourse = new List<int>();
 
-                
-                var courseMathes = digitRegex.Matches(data.courseString);
-                foreach (var i in courseMathes)
-                    tempCourse.Add(int.Parse(i.ToString()));
-
-                foreach (Subject subject in result)
-                    foreach (var i in tempCourse)
-                        if (subject.Course.Contains(i))
-                        {
-                            result2.Add(subject);
-                            break;
-                        }
-            }
-            else
-                result2 = new HashSet<Subject>(result);
-
-            if (data.termString != "")
-            {
-                result = new HashSet<Subject>();
-                List<int> tempTerm = new List<int>();
-                var termMathes = digitRegex.Matches(data.termString);
-                foreach (var i in termMathes)
-                    tempTerm.Add(int.Parse(i.ToString()));
-
-                //foreach (Subject subject in result2)
-                //    foreach (var i in tempTerm)
-                //        if (subject.Term.Contains(i))
-                //        {
-                //            result.Add(subject);
-                //            break;
-                //        }
-                tempTerm.Sort();
-                foreach (Subject subject in result2)
+                HashSet<Subject> result, result2;
+                if (data.searchQuery != "")
                 {
-                    bool check = true;
-                    if (subject.Term.Count == tempTerm.Count)
+                    result = new HashSet<Subject>();
+
+                    Regex fioSearch = new Regex($@"^{data.searchQuery}");
+                    foreach (Subject subject in callingForm.subjectsCopy)
                     {
-                        for (int i = 0; i < subject.Term.Count; i++)
-                            if (subject.Term[i] != tempTerm[i])
+                        foreach (Lecturer lecturer in subject.Lecturers)
+                        {
+                            if ((fioSearch.Matches(lecturer.Name).Count +
+                                fioSearch.Matches(lecturer.Surname).Count +
+                                fioSearch.Matches(lecturer.Patronymic).Count) > 0)
                             {
-                                check = false;
+                                result.Add(subject);
                                 break;
                             }
-                    }
-                    else check = false;
-                    if (check)
-                        result.Add(subject);
-                }
-            }
-            else
-                result = new HashSet<Subject>(result2);
 
-            if (data.additionalQuery != "")
-            {
-                result2 = new HashSet<Subject>();
-
-                Regex fioSearch = new Regex(@"[" + data.additionalQuery + "]+",RegexOptions.IgnoreCase);
-                foreach (Subject subject in result)
-                {
-                    foreach (Lecturer lecturer in subject.Lecturers)
-                    {
-                        if ((fioSearch.Matches(lecturer.Name).Count +
-                            fioSearch.Matches(lecturer.Surname).Count +
-                            fioSearch.Matches(lecturer.Patronymic).Count) > 0)
-                        {
-                            result2.Add(subject);
-                            break;
                         }
                     }
                 }
+                else
+                    result = new HashSet<Subject>(callingForm.subjectsCopy);
+
+                Regex digitRegex = new Regex(@"(\d{1})");
+                if (data.courseString != "")
+                {
+                    result2 = new HashSet<Subject>();
+                    List<int> tempCourse = new List<int>();
+
+
+                    var courseMathes = digitRegex.Matches(data.courseString);
+                    foreach (var i in courseMathes)
+                        tempCourse.Add(int.Parse(i.ToString()));
+
+                    foreach (Subject subject in result)
+                        foreach (var i in tempCourse)
+                            if (subject.Course.Contains(i))
+                            {
+                                result2.Add(subject);
+                                break;
+                            }
+                }
+                else
+                    result2 = new HashSet<Subject>(result);
+
+                if (data.termString != "")
+                {
+                    result = new HashSet<Subject>();
+                    List<int> tempTerm = new List<int>();
+                    var termMathes = digitRegex.Matches(data.termString);
+                    foreach (var i in termMathes)
+                        tempTerm.Add(int.Parse(i.ToString()));
+
+
+                    tempTerm.Sort();
+                    foreach (Subject subject in result2)
+                    {
+                        bool check = true;
+                        if (subject.Term.Count == tempTerm.Count)
+                        {
+                            for (int i = 0; i < subject.Term.Count; i++)
+                                if (subject.Term[i] != tempTerm[i])
+                                {
+                                    check = false;
+                                    break;
+                                }
+                        }
+                        else check = false;
+                        if (check)
+                            result.Add(subject);
+                    }
+                }
+                else
+                    result = new HashSet<Subject>(result2);
+
+                if (data.additionalQuery != "")
+                {
+                    result2 = new HashSet<Subject>();
+
+                    Regex fioSearch = new Regex(@"[" + data.additionalQuery + "]+", RegexOptions.IgnoreCase);
+                    foreach (Subject subject in result)
+                    {
+                        foreach (Lecturer lecturer in subject.Lecturers)
+                        {
+                            if ((fioSearch.Matches(lecturer.Name).Count +
+                                fioSearch.Matches(lecturer.Surname).Count +
+                                fioSearch.Matches(lecturer.Patronymic).Count) > 0)
+                            {
+                                result2.Add(subject);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else
+                    result2 = new HashSet<Subject>(result);
+
+
+                callingForm.subjects.Clear();
+                callingForm.subjects.AddRange(result2);
+                callingForm.UpdateList();
+                Close();
             }
-            else
-                result2 = new HashSet<Subject>(result);
-
-
-            callingForm.subjects.Clear();
-            callingForm.subjects.AddRange(result2);
-            callingForm.UpdateList();
-            //Close();
         }
-        class ExtendedSearchData
+        
+
+
+    }
+    public class ExtendedSearchData
+    {
+
+        [StringLength(100)]
+        [RegularExpression(@"[A-Z|a-z|а-я|А-Я]*")]
+        public string searchQuery;
+
+        [StringLength(100)]
+        [RegularExpression(@"\s*\[1-2]{1}\s*(,\s*\[1-2]{1}\s*)?")]
+        public string termString;
+
+
+        [StringLength(100)]
+        [RegularExpression(@"\s*\d{1}\s*,\s*\d{1}\s*,\s*\d{1}\s*,\s*\d{1}\s*")]
+        public string courseString;
+
+
+        //[RegularExpression(@"[A-Z|a-z|а-я|А-Я]*")]
+        [StringLength(1)]
+        [Required]
+        public string additionalQuery;
+
+        public ExtendedSearchData(string searchQuery, string termString, string courseString, string additionalQuery)
         {
-            
-            [StringLength(100, MinimumLength = 3)]
-            [RegularExpression(@"[A-Z|a-z|а-я|А-Я]*")]
-            public string searchQuery;
-
-            
-            [StringLength(100)]
-            [RegularExpression(@"\s*\[1-2]{1}\s*(,\s*\[1-2]{1}\s*)?")]
-            public string termString;
-
-            
-            [StringLength(100)]
-            [RegularExpression(@"\s*\d{1}\s*,\s*\d{1}\s*,\s*\d{1}\s*,\s*\d{1}\s*")]
-            public string courseString;
-
-            [StringLength(100)]
-            [RegularExpression(@"[A-Z|a-z|а-я|А-Я]*")]
-            public string additionalQuery;
-
-            public ExtendedSearchData(string searchQuery, string termString, string courseString, string additionalQuery)
-            {
-                this.searchQuery = searchQuery;
-                this.termString = termString;
-                this.courseString = courseString; 
-                this.additionalQuery = additionalQuery;
-            }
+            this.searchQuery = searchQuery;
+            this.termString = termString;
+            this.courseString = courseString;
+            this.additionalQuery = additionalQuery;
         }
-
-
     }
 }
