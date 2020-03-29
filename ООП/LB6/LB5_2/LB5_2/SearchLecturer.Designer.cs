@@ -59,6 +59,7 @@
             this.Controls.Add(this.SearchLecturerBox);
             this.Name = "SearchLecturer";
             this.Text = "Поиск по лектору";
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -65,6 +65,8 @@ namespace LB5_2
 
             public Data(string text) => this.text = text;
         }
+
+        
     }
     
 }
