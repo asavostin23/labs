@@ -88,23 +88,61 @@ namespace LB5_2
                 foreach (var i in termMathes)
                     tempTerm.Add(int.Parse(i.ToString()));
 
+                //foreach (Subject subject in result2)
+                //    foreach (var i in tempTerm)
+                //        if (subject.Term.Contains(i))
+                //        {
+                //            result.Add(subject);
+                //            break;
+                //        }
+                tempTerm.Sort();
                 foreach (Subject subject in result2)
-                    foreach (var i in tempTerm)
-                        if (subject.Term.Contains(i))
-                        {
-                            result.Add(subject);
-                            break;
-                        }
-
+                {
+                    bool check = true;
+                    if (subject.Term.Count == tempTerm.Count)
+                    {
+                        for (int i = 0; i < subject.Term.Count; i++)
+                            if (subject.Term[i] != tempTerm[i])
+                            {
+                                check = false;
+                                break;
+                            }
+                    }
+                    else check = false;
+                    if (check)
+                        result.Add(subject);
+                }
             }
             else
                 result = new HashSet<Subject>(result2);
 
+            if (data.additionalQuery != "")
+            {
+                result2 = new HashSet<Subject>();
+
+                Regex fioSearch = new Regex(@"[" + data.additionalQuery + "]+",RegexOptions.IgnoreCase);
+                foreach (Subject subject in result)
+                {
+                    foreach (Lecturer lecturer in subject.Lecturers)
+                    {
+                        if ((fioSearch.Matches(lecturer.Name).Count +
+                            fioSearch.Matches(lecturer.Surname).Count +
+                            fioSearch.Matches(lecturer.Patronymic).Count) > 0)
+                        {
+                            result2.Add(subject);
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+                result2 = new HashSet<Subject>(result);
+
 
             callingForm.subjects.Clear();
-            callingForm.subjects.AddRange(result);
+            callingForm.subjects.AddRange(result2);
             callingForm.UpdateList();
-            Close();
+            //Close();
         }
         class ExtendedSearchData
         {
@@ -115,7 +153,7 @@ namespace LB5_2
 
             
             [StringLength(100)]
-            [RegularExpression(@"\s*\d{1}\s*,\s*\d{1}\s*")]
+            [RegularExpression(@"\s*\[1-2]{1}\s*(,\s*\[1-2]{1}\s*)?")]
             public string termString;
 
             
