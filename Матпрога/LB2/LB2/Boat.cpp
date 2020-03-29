@@ -79,15 +79,9 @@ int boat_с(      // функция возвращает доход от перевозки контейнеров
 	int rc = 0, i = s.getfirst(), cc = 0;
 	while (i > 0)
 	{
-
 		if (boatfnc::compv(s, minv, maxv, v))
-
-
 			if ((cc = boatfnc::calcc(s, c)) > rc)
-			{
 				rc = cc; boatfnc::copycomb(m, r, s.sset);
-			}
-
 		i = s.getnext();
 	};
 	return rc;
