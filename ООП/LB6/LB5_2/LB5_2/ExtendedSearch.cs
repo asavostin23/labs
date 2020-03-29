@@ -42,8 +42,35 @@ namespace LB5_2
 
                 foreach (var error in results)
                 {
-                    //Console.WriteLine(error.ErrorMessage);
+                    switch (error.ErrorMessage)
+                    {
+                        case "SearchError":
+                            SearchBox.BackColor = Color.Red;
+                            break;
+                        case "TermError":
+                            TermBox.BackColor = Color.Red;
+                            break;
+                        case "CourseError":
+                            CourseBox.BackColor = Color.Red;
+                            break;
+                        case "AdditoinalQueryError":
+                            AdditionalSearchBox.BackColor = Color.Red;
+                            break;
+                    }
                 }
+
+                //    if (!tb.MaskCompleted)
+                //    {
+                //        tb.BackColor = Color.Red;
+                //        tb.Tag = false;
+                //    }
+                //    else
+                //    {
+                //        tb.BackColor = System.Drawing.SystemColors.Window;
+                //        tb.Tag = true;
+                //    }
+                //Console.WriteLine(error.ErrorMessage);
+
             }
             else
             {
@@ -155,29 +182,28 @@ namespace LB5_2
                 Close();
             }
         }
-        
+
 
 
     }
     public class ExtendedSearchData
     {
 
-        [StringLength(100)]
-        [RegularExpression(@"(\s*[а-я|А-Я]*)*")]
+
+        [RegularExpression(@"(\s*[а-я|А-Я]*)*", ErrorMessage = "SearchError")]
         public string searchQuery { get; set; }
 
-        [StringLength(100)]
-        [RegularExpression(@"\s*[1-2]{1}\s*(,\s*[1-2]{1}\s*)?")]
+
+        [RegularExpression(@"\s*[1-2]{1}\s*(,\s*[1-2]{1}\s*)?", ErrorMessage = "TermError")]
         public string termString { get; set; }
 
 
-        [StringLength(100)]
-        [RegularExpression(@"\s*\d{1}\s*(,\s*\d{1}\s*){0,3}")]
+
+        [RegularExpression(@"\s*\d{1}\s*(,\s*\d{1}\s*){0,3}", ErrorMessage = "CourseError")]
         public string courseString { get; set; }
 
 
-        [RegularExpression(@"[A-Z|a-z|а-я|А-Я]*")]
-        [StringLength(100)]
+        [RegularExpression(@"[A-Z|a-z|а-я|А-Я]*", ErrorMessage = "AdditonalQueryError")]
         public string additionalQuery { get; set; }
 
         public ExtendedSearchData(string searchQuery, string termString, string courseString, string additionalQuery)
