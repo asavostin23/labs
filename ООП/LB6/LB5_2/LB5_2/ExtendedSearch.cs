@@ -53,7 +53,7 @@ namespace LB5_2
                 {
                     result = new HashSet<Subject>();
 
-                    Regex fioSearch = new Regex($@"^{data.searchQuery}");
+                    Regex fioSearch = new Regex($@"{data.searchQuery}",RegexOptions.IgnoreCase);//^
                     foreach (Subject subject in callingForm.subjectsCopy)
                     {
                         foreach (Lecturer lecturer in subject.Lecturers)
@@ -161,23 +161,22 @@ namespace LB5_2
     {
 
         [StringLength(100)]
+        [RegularExpression(@"[а-я|А-Я]*")]
+        public string searchQuery { get; set; }
+
+        [StringLength(100)]
+        [RegularExpression(@"\s*[1-2]{1}\s*(,\s*[1-2]{1}\s*)?")]
+        public string termString { get; set; }
+
+
+        [StringLength(100)]
+        [RegularExpression(@"\s*\d{1}\s*(,\s*\d{1}\s*){0,3}")]
+        public string courseString { get; set; }
+
+
         [RegularExpression(@"[A-Z|a-z|а-я|А-Я]*")]
-        public string searchQuery;
-
         [StringLength(100)]
-        [RegularExpression(@"\s*\[1-2]{1}\s*(,\s*\[1-2]{1}\s*)?")]
-        public string termString;
-
-
-        [StringLength(100)]
-        [RegularExpression(@"\s*\d{1}\s*,\s*\d{1}\s*,\s*\d{1}\s*,\s*\d{1}\s*")]
-        public string courseString;
-
-
-        //[RegularExpression(@"[A-Z|a-z|а-я|А-Я]*")]
-        [StringLength(1)]
-        [Required]
-        public string additionalQuery;
+        public string additionalQuery { get; set; }
 
         public ExtendedSearchData(string searchQuery, string termString, string courseString, string additionalQuery)
         {
