@@ -46,7 +46,6 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.ShowSubjectsCopyButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.SubjectsListBox = new System.Windows.Forms.ListBox();
@@ -165,7 +164,6 @@
             this.toolStripButton2,
             this.toolStripButton3,
             this.toolStripButton4,
-            this.toolStripButton5,
             this.ShowSubjectsCopyButton,
             this.toolStripButton6});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
@@ -213,16 +211,6 @@
             this.toolStripButton4.Size = new System.Drawing.Size(65, 22);
             this.toolStripButton4.Text = "Изменить";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(114, 22);
-            this.toolStripButton5.Text = "Последний запрос";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // ShowSubjectsCopyButton
             // 
@@ -334,7 +322,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel StripDatetime;
         private System.Windows.Forms.ToolStripStatusLabel StripLastOperation;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripButton ShowSubjectsCopyButton;
         private System.Windows.Forms.ToolStripMenuItem расширенныйПоискToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem панельИнструментовToolStripMenuItem;
