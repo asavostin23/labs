@@ -187,6 +187,7 @@ namespace LB5_2
             foreach (var i in subjectsCopy)
                 SubjectsListBox.Items.Add(i.Name);
             StripSubjectCount.Text = subjects.Count.ToString();
+            RestoreSubjectsFromCopy();////
         }
 
         private void панельИнструментовToolStripMenuItem_Click(object sender, EventArgs e)
@@ -197,6 +198,7 @@ namespace LB5_2
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             LoadFromJson();
+
         }
         private void LoadFromJson()
         {

@@ -220,8 +220,8 @@
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(65, 22);
-            this.toolStripButton5.Text = "Обновить";
+            this.toolStripButton5.Size = new System.Drawing.Size(114, 22);
+            this.toolStripButton5.Text = "Последний запрос";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // ShowSubjectsCopyButton
@@ -230,8 +230,8 @@
             this.ShowSubjectsCopyButton.Image = ((System.Drawing.Image)(resources.GetObject("ShowSubjectsCopyButton.Image")));
             this.ShowSubjectsCopyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ShowSubjectsCopyButton.Name = "ShowSubjectsCopyButton";
-            this.ShowSubjectsCopyButton.Size = new System.Drawing.Size(112, 22);
-            this.ShowSubjectsCopyButton.Text = "ShowSubjectsCopy";
+            this.ShowSubjectsCopyButton.Size = new System.Drawing.Size(103, 22);
+            this.ShowSubjectsCopyButton.Text = "Все дисциплины";
             this.ShowSubjectsCopyButton.Click += new System.EventHandler(this.ShowSubjectsCopyButton_Click);
             // 
             // toolStripButton6
