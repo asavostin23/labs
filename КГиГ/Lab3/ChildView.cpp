@@ -32,10 +32,10 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_COMMAND(ID_PLOT_F4, &CChildView::OnPlotF4)
 	ON_COMMAND(ID_PLOT_ALL, &CChildView::OnPlotAll)
 	ON_COMMAND(ID_ALL, &CChildView::OnAll)
-//	ON_COMMAND(ID_F1, &CChildView::OnF1)
-	//ON_COMMAND(ID_F2, &CChildView::OnF2)
-//	ON_COMMAND(ID_F3, &CChildView::OnF3)
-	//ON_COMMAND(ID_F4, &CChildView::OnF4)
+	//	ON_COMMAND(ID_F1, &CChildView::OnF1)
+		//ON_COMMAND(ID_F2, &CChildView::OnF2)
+	//	ON_COMMAND(ID_F3, &CChildView::OnF3)
+		//ON_COMMAND(ID_F4, &CChildView::OnF4)
 END_MESSAGE_MAP()
 
 // обработчики сообщений CChildView
@@ -59,36 +59,36 @@ void CChildView::OnPaint()//при рисовании будет использовать следующие параметры
 
 	if (graphType == 1)
 	{
-		plot1.plot(dc, 1, 1,1);//начинаем рисовать
+		plot1.plot(dc, 1, 1, 1);//начинаем рисовать
 		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
 		dc.SetMapMode(buffer);//ќпредел€ет новый режим отображение
 	}
 	if (graphType == 2)
 	{
-		plot2.plot(dc, 1, 1,2);
+		plot2.plot(dc, 1, 1, 2);
 		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
 		dc.SetMapMode(buffer);
-		
+
 	}
 	if (graphType == 3)
 	{
-		plot3.plot(dc, 1, 1,3);
+		plot3.plot(dc, 1, 1, 3);
 		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
 		dc.SetMapMode(buffer);
 	}
 	if (graphType == 4)
 	{
-		plot4.plot(dc, 1, 1,4);
+		plot4.plot(dc, 1, 1, 4);
 		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
 		dc.SetMapMode(buffer);
 	}
 
 	if (graphType == 5)
 	{
-		plot1.plot(dc, 1, 1,1);
-		plot2.plot(dc, 1, 1,2);
-		plot3.plot(dc, 1, 1,3);
-		plot4.plot(dc, 1, 1,4);
+		plot1.plot(dc, 1, 1, 1);
+		plot2.plot(dc, 1, 1, 2);
+		plot3.plot(dc, 1, 1, 3);
+		plot4.plot(dc, 1, 1, 4);
 	}
 
 	// TODO: ƒобавьте код обработки сообщений
@@ -122,7 +122,7 @@ void CChildView::OnPlotF1()
 	i = 0;
 	for (double x = -3 * PI; x <= 3 * PI; x += PI / 36.0)
 	{
-		values(i) = sin(x)/x;
+		values(i) = sin(x) / x;
 		i++;
 	}
 
@@ -231,7 +231,6 @@ void CChildView::OnPlotF4()
 	Invalidate();
 }
 
-
 void CChildView::OnPlotAll()
 {
 	CPlotPen pen1;
@@ -275,7 +274,7 @@ void CChildView::OnPlotAll()
 	i = 0;
 	for (double x = -3 * PI; x <= 3 * PI; x += PI / 36)
 	{
-		values1(i) = sin(x)/x;
+		values1(i) = sin(x) / x;
 		i++;
 	}
 

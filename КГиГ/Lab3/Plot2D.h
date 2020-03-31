@@ -1,5 +1,6 @@
 #pragma once
-
+#define K_GRAPH_CENTER 2
+#define K_GRAPH_1 1.3
 int setMode(CDC&, CRect&, CRectD&);
 
 CMatrix getConverter(CRectD&, CRect&);
