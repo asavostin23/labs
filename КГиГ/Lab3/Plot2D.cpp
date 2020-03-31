@@ -123,12 +123,12 @@ void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawInnerGrid)//Draw
 			V(1) = _rectWorld._bottom;
 			W = _converter * V;
 
-			for (double i = 0; i < (_rectWindow.bottom - _rectWindow.top); i += 10)
+			for (double i = (_rectWindow.bottom - _rectWindow.top) /2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
 			{
 				dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
 				dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
 			}
-			for (double i = 0; i < (_rectWindow.right - _rectWindow.left); i += 10)
+			for (double i = (_rectWindow.right - _rectWindow.left)/2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
 			{
 				dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
 				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
@@ -136,13 +136,16 @@ void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawInnerGrid)//Draw
 		}
 		if (_rectWorld._top * _rectWorld._bottom < 0)
 		{
-			V(0) = _rectWorld._left;
-			V(1) = 0;
-			W = _converter * V;
-
-			V(0) = _rectWorld._right;
-			V(1) = 0;
-			W = _converter * V;
+			for (double i = (_rectWindow.bottom - _rectWindow.top) / 2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
+			{
+				dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
+				dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
+			}
+			for (double i = (_rectWindow.right - _rectWindow.left) / 2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
+			{
+				dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
+				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
+			}
 		}
 		dc.SelectObject(pOldPen);
 	}

@@ -59,36 +59,36 @@ void CChildView::OnPaint()//при рисовании будет использовать следующие параметры
 
 	if (graphType == 1)
 	{
-		plot1.plot(dc, 1, 0);//начинаем рисовать
+		plot1.plot(dc, 1, 1);//начинаем рисовать
 		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
 		dc.SetMapMode(buffer);//Определяет новый режим отображение
 	}
 	if (graphType == 2)
 	{
-		plot2.plot(dc, 1, 0);
+		plot2.plot(dc, 1, 1);
 		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
 		dc.SetMapMode(buffer);
 		
 	}
 	if (graphType == 3)
 	{
-		plot3.plot(dc, 1, 0);
+		plot3.plot(dc, 1, 1);
 		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
 		dc.SetMapMode(buffer);
 	}
 	if (graphType == 4)
 	{
-		plot4.plot(dc, 1, 0);
+		plot4.plot(dc, 1, 1);
 		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
 		dc.SetMapMode(buffer);
 	}
 
 	if (graphType == 5)
 	{
-		plot1.plot(dc, 1, 0);
-		plot2.plot(dc, 1, 0);
-		plot3.plot(dc, 1, 0);
-		plot4.plot(dc, 1, 0);
+		plot1.plot(dc, 1, 1);
+		plot2.plot(dc, 1, 1);
+		plot3.plot(dc, 1, 1);
+		plot4.plot(dc, 1, 1);
 	}
 
 	// TODO: Добавьте код обработки сообщений
