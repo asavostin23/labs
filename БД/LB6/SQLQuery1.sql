@@ -3,11 +3,8 @@ use SAV_UNIVER;
 select PROFESSION.PROFESSION_NAME from PROFESSION where ((PROFESSION_NAME like '%технология%') or (PROFESSION_NAME like '%технологии%'));
 select PROFESSION.FACULTY from PROFESSION where ((PROFESSION_NAME like '%технология%') or (PROFESSION_NAME like '%технологии%'));
 
-
-
 select PULPIT.PULPIT_NAME, PROFESSION.PROFESSION_NAME, PULPIT.FACULTY from PULPIT,PROFESSION
 where PULPIT.FACULTY in (select PROFESSION.FACULTY from PROFESSION where ((PROFESSION_NAME like '%технология%') or (PROFESSION_NAME like '%технологии%'))); 
-
 
 select PULPIT.PULPIT_NAME, PROFESSION.PROFESSION_NAME, PULPIT.FACULTY from PULPIT join PROFESSION
 on PULPIT.FACULTY in (select PROFESSION.FACULTY from PROFESSION where ((PROFESSION_NAME like '%технология%') or (PROFESSION_NAME like '%технологии%'))); 
@@ -21,7 +18,7 @@ where A1.AUDITORIUM_NAME = (select top(1) AUDITORIUM_NAME from AUDITORIUM A2 whe
 select FACULTY_NAME from FACULTY f
 where not exists(select * from PULPIT p where f.FACULTY = p.FACULTY);
 
-select 
+select top(1)
 	(select avg(NOTE) from PROGRESS where PROGRESS.SUBJECT = 'ОАиП')[ОАиП],
 	(select avg(NOTE) from PROGRESS where PROGRESS.SUBJECT = 'БД')[БД],
 	(select avg(NOTE) from PROGRESS where PROGRESS.SUBJECT = 'СУБД')[СУБД]
