@@ -109,14 +109,10 @@ void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawAxis, int graph)//Draw
 	{
 		dc.Rectangle(_rectWindow);//Рисуем прямоугольник
 	}
-	if (drawAxis)//рисуем график
+	if (drawAxis)
 	{
 		CPen pen(_penAxis._style, _penAxis._width, _penAxis._color);//передаем параметры пера
 		CPen* pOldPen = dc.SelectObject(&pen); // Выбираем перо в контекст памяти
-		
-		V(0) = 0; //по х 0
-		V(1) = _rectWorld._top; //по у передается значение верхушки прямоугольника
-		W = _converter * V; //конверт в оконную сист коорд
 
 		V(0) = 0;
 		V(1) = _rectWorld._bottom;
@@ -157,7 +153,6 @@ void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawAxis, int graph)//Draw
 				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
 			break;
 		}
-		
 		dc.SelectObject(pOldPen);
 	}
 
