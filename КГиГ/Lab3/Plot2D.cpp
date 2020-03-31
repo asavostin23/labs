@@ -99,7 +99,7 @@ void CPlot2D::getRectWorld(CRectD& rectWorld)
 	rectWorld._top = _rectWorld._top;
 }
 
-void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawInnerGrid)//Draw
+void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawInnerGrid, int graph)//Draw
 {
 	dc.SetMapMode(//устанавливает режим отображения контекста устройства. Определяет единицу измерения, для преобразования единиц измерения пространства страницы в пространства устройства
 		MM_TEXT);//логическая единица измерения отображается как один пиксель устройства
@@ -113,29 +113,50 @@ void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawInnerGrid)//Draw
 	{
 		CPen pen(_penAxis._style, _penAxis._width, _penAxis._color);//передаем параметры пера
 		CPen* pOldPen = dc.SelectObject(&pen); // Выбираем перо в контекст памяти
-		if (_rectWorld._left * _rectWorld._right < 0)
-		{
-			V(0) = 0; //по х 0
-			V(1) = _rectWorld._top; //по у передается значение верхушки прямоугольника
-			W = _converter * V; //конверт в оконную сист коорд
+		//if (_rectWorld._left * _rectWorld._right < 0)
+		//{
+		//	V(0) = 0; //по х 0
+		//	V(1) = _rectWorld._top; //по у передается значение верхушки прямоугольника
+		//	W = _converter * V; //конверт в оконную сист коорд
 
-			V(0) = 0;
-			V(1) = _rectWorld._bottom;
-			W = _converter * V;
+		//	V(0) = 0;
+		//	V(1) = _rectWorld._bottom;
+		//	W = _converter * V;
 
-			for (double i = (_rectWindow.bottom - _rectWindow.top) /2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
-			{
-				dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
-				dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
-			}
-			for (double i = (_rectWindow.right - _rectWindow.left)/2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
-			{
-				dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
-				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
-			}
-		}
-		if (_rectWorld._top * _rectWorld._bottom < 0)
+		//	for (double i = (_rectWindow.bottom - _rectWindow.top) /2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
+		//	{
+		//		dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
+		//		dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
+		//	}
+		//	for (double i = (_rectWindow.right - _rectWindow.left)/2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
+		//	{
+		//		dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
+		//		dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
+		//	}
+		//}
+		//if (_rectWorld._top * _rectWorld._bottom < 0)
+		//{
+		//	for (double i = (_rectWindow.bottom - _rectWindow.top) / 2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
+		//	{
+		//		dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
+		//		dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
+		//	}
+		//	for (double i = (_rectWindow.right - _rectWindow.left) / 2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
+		//	{
+		//		dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
+		//		dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
+		//	}
+		//}
+		V(0) = 0; //по х 0
+		V(1) = _rectWorld._top; //по у передается значение верхушки прямоугольника
+		W = _converter * V; //конверт в оконную сист коорд
+
+		V(0) = 0;
+		V(1) = _rectWorld._bottom;
+		W = _converter * V;
+		switch (graph)
 		{
+		case 1:
 			for (double i = (_rectWindow.bottom - _rectWindow.top) / 2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
 			{
 				dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
@@ -146,7 +167,49 @@ void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawInnerGrid)//Draw
 				dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
 				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
 			}
+			break;
+		case 2:
+			
+
+			for (double i = (_rectWindow.bottom - _rectWindow.top) / 2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
+			{
+				dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
+				dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
+			}
+			for (double i = (_rectWindow.right - _rectWindow.left) / 2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
+			{
+				dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
+				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
+			}
+			break;
+		case 3:
+			for (double i = (_rectWindow.bottom - _rectWindow.top) / 2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
+			{
+				dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
+				dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
+			}
+			for (double i = (_rectWindow.right - _rectWindow.left) / 2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
+			{
+				dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
+				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
+			}
+			break;
+		case 4:
+			
+
+			for (double i = (_rectWindow.bottom - _rectWindow.top) / 2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
+			{
+				dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
+				dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
+			}
+			for (double i = (_rectWindow.right - _rectWindow.left) / 2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
+			{
+				dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
+				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
+			}
+			break;
 		}
+		
 		dc.SelectObject(pOldPen);
 	}
 

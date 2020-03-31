@@ -39,5 +39,5 @@ public:
 	void setPenAxis(CPlotPen&); //перо осей координат
 	void getCoordsWindow(double, double, int&, int&); //пересчет из мировой сист координат в оконную сист коорд
 	void getRectWorld(CRectD&);  //возврат область графика в мировой сист коорд
-	void plot(CDC&, bool, bool); //рисование
+	void plot(CDC&, bool, bool, int); //рисование
 };
