@@ -156,57 +156,40 @@ void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawInnerGrid, int graph)//
 		W = _converter * V;
 		switch (graph)
 		{
+			double i;
 		case 1:
-			for (double i = (_rectWindow.bottom - _rectWindow.top) / 2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
-			{
+			i = (_rectWindow.bottom - _rectWindow.top) / 1.3;
 				dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
 				dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
-			}
-			for (double i = (_rectWindow.right - _rectWindow.left) / 2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
-			{
+			i = (_rectWindow.right - _rectWindow.left) / 2; 
 				dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
 				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
-			}
 			break;
 		case 2:
-			
-
-			for (double i = (_rectWindow.bottom - _rectWindow.top) / 2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
-			{
+			 i = (_rectWindow.bottom - _rectWindow.top) / 2; 
 				dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
 				dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
-			}
-			for (double i = (_rectWindow.right - _rectWindow.left) / 2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
-			{
+			i = (_rectWindow.right - _rectWindow.left) / 2; 
 				dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
 				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
-			}
 			break;
 		case 3:
-			for (double i = (_rectWindow.bottom - _rectWindow.top) / 2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
-			{
+			 i = (_rectWindow.bottom - _rectWindow.top) / 2;
 				dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
 				dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
-			}
-			for (double i = (_rectWindow.right - _rectWindow.left) / 2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
-			{
+			i = (_rectWindow.right - _rectWindow.left) / 2;
 				dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
 				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
-			}
 			break;
 		case 4:
 			
-
-			for (double i = (_rectWindow.bottom - _rectWindow.top) / 2; i < (_rectWindow.bottom - _rectWindow.top); i += 1000000000)
-			{
+			//i = _rectWindow.bottom - 100;
+			i = (_rectWindow.bottom - _rectWindow.top);
 				dc.MoveTo(_rectWindow.left, _rectWindow.top + i);//ставим точку
 				dc.LineTo(_rectWindow.right, _rectWindow.top + i);//рисуем линию
-			}
-			for (double i = (_rectWindow.right - _rectWindow.left) / 2; i < (_rectWindow.right - _rectWindow.left); i += 10000000000)
-			{
+			i = (_rectWindow.right - _rectWindow.left) / 2; 
 				dc.MoveTo(_rectWindow.left + i, _rectWindow.top);
 				dc.LineTo(_rectWindow.left + i, _rectWindow.bottom);
-			}
 			break;
 		}
 		
