@@ -32,10 +32,6 @@ BEGIN_MESSAGE_MAP(CChildView, CWnd)
 	ON_COMMAND(ID_PLOT_F4, &CChildView::OnPlotF4)
 	ON_COMMAND(ID_PLOT_ALL, &CChildView::OnPlotAll)
 	ON_COMMAND(ID_ALL, &CChildView::OnAll)
-	//	ON_COMMAND(ID_F1, &CChildView::OnF1)
-		//ON_COMMAND(ID_F2, &CChildView::OnF2)
-	//	ON_COMMAND(ID_F3, &CChildView::OnF3)
-		//ON_COMMAND(ID_F4, &CChildView::OnF4)
 END_MESSAGE_MAP()
 
 // обработчики сообщений CChildView
@@ -57,38 +53,40 @@ void CChildView::OnPaint()//при рисовании будет использовать следующие параметры
 {
 	CPaintDC dc(this); // контекст устройства для рисования
 
-	if (graphType == 1)
+	switch (graphType)
 	{
-		plot1.plot(dc, 1, 1, 1);//начинаем рисовать
-		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
-		dc.SetMapMode(buffer);//Определяет новый режим отображение
-	}
-	if (graphType == 2)
-	{
-		plot2.plot(dc, 1, 1, 2);
-		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
-		dc.SetMapMode(buffer);
-
-	}
-	if (graphType == 3)
-	{
-		plot3.plot(dc, 1, 1, 3);
-		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
-		dc.SetMapMode(buffer);
-	}
-	if (graphType == 4)
-	{
-		plot4.plot(dc, 1, 1, 4);
-		int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
-		dc.SetMapMode(buffer);
-	}
-
-	if (graphType == 5)
-	{
-		plot1.plot(dc, 1, 1, 1);
-		plot2.plot(dc, 1, 1, 2);
-		plot3.plot(dc, 1, 1, 3);
-		plot4.plot(dc, 1, 1, 4);
+	case 1:
+		{
+			plot1.plot(dc, 1, 1, 1);
+		}
+		break;
+	case 2:
+		{
+			plot2.plot(dc, 1, 1, 2);
+			int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
+			dc.SetMapMode(buffer);
+		}
+		break;
+	case 3:
+		{
+			plot3.plot(dc, 1, 1, 3);
+		}
+		break;
+	case 4:
+		{
+			plot4.plot(dc, 1, 1, 4);
+			int buffer = setMode(dc, CRect(1, 1, 2, 2), CRectD(1, 10, 5, 10));
+			dc.SetMapMode(buffer);
+		}
+		break;
+	case 5:
+		{
+			plot1.plot(dc, 1, 1, 1);
+			plot2.plot(dc, 1, 1, 2);
+			plot3.plot(dc, 1, 1, 3);
+			plot4.plot(dc, 1, 1, 4);
+		}
+		break;
 	}
 
 	// TODO: Добавьте код обработки сообщений
@@ -128,7 +126,7 @@ void CChildView::OnPlotF1()
 
 	plot1.setParams(arguments, values, Rect);
 	graphType = 1;
-	Invalidate();//говоррит что нужно перерисовать окно => вызовется функция OnPaint()
+	Invalidate();
 }
 
 
@@ -233,20 +231,16 @@ void CChildView::OnPlotF4()
 
 void CChildView::OnPlotAll()
 {
-	CPlotPen pen1;
-	CPlotPen pen2;
-	CPlotPen pen3;
-	CPlotPen pen4;
+	CPlotPen pen1, pen2, pen3, pen4;
+	
 	//параметры пера осей
-	pen1.set(PS_SOLID, 1, RGB(0, 0, 255));//сплошной синий
+	pen1.set(PS_SOLID, 1, RGB(0, 0, 255));
 	pen2.set(PS_SOLID, 1, RGB(0, 0, 255));
 	pen2.set(PS_SOLID, 1, RGB(0, 0, 255));
-	pen4.set(PS_SOLID, 2, RGB(0, 0, 255));//синий
+	pen4.set(PS_SOLID, 2, RGB(0, 0, 255));
 
-	CPlotPen penLine1;
-	CPlotPen penLine2;
-	CPlotPen penLine3;
-	CPlotPen penLine4;
+	CPlotPen penLine1, penLine2, penLine3, penLine4;
+	
 	//параметры пера функции
 	penLine1.set(PS_SOLID, 2, RGB(255, 0, 0));
 	plot1.setPenLine(penLine1);

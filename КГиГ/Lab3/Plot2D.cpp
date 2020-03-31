@@ -99,7 +99,7 @@ void CPlot2D::getRectWorld(CRectD& rectWorld)
 	rectWorld._top = _rectWorld._top;
 }
 
-void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawInnerGrid, int graph)//Draw
+void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawAxis, int graph)//Draw
 {
 	dc.SetMapMode(//устанавливает режим отображения контекста устройства. Определяет единицу измерения, для преобразования единиц измерения пространства страницы в пространства устройства
 		MM_TEXT);//логическая единица измерения отображается как один пиксель устройства
@@ -109,7 +109,7 @@ void CPlot2D::plot(CDC& dc, bool drawOuterRect, bool drawInnerGrid, int graph)//
 	{
 		dc.Rectangle(_rectWindow);//Рисуем прямоугольник
 	}
-	if (drawInnerGrid)//рисуем график
+	if (drawAxis)//рисуем график
 	{
 		CPen pen(_penAxis._style, _penAxis._width, _penAxis._color);//передаем параметры пера
 		CPen* pOldPen = dc.SelectObject(&pen); // Выбираем перо в контекст памяти
